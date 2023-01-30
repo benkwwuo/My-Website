@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en"> 
+  <head>
+    <meta charset=""UTF-8">
+    <title>Benjamin's Portfolio</title> 
+    <style>
+      textarea {
+        resize: none;
+      }
+    </style>
+  </head>
+
+  <body> 
+    <header>
+        <h1>Benjamin's Portfolio</h1> 
+        <hr>
+        <nav>
+            <ul>
+                <li><a href="/main.html">Home</a></li>
+                <li><a href="/pages/projects.html">Projects</a></li>
+                <li><a href="/pages/resume.html">Resume</a></li>
+                <li><a href="/pages/about.html">About Me</a></li>
+                <li><a href="/pages/contact.html">Contact Me</a></li>
+                <li><a href="/pages/memes.html">Memes</a></li>
+            </ul>
+        </nav>
+        <hr>
+    </header>
+    <main>
+        <h2><b>Contact Me</b></h2>
+        <section> 
+          <p><strong>To contact me, </strong>please fill in the information below</p>
+          <form action="action.php" method="GET">
+            <label for="firstname">First Name: <textarea name="firstname" rows="1" columns="20" required></textarea></label>
+            <br>
+            <label for="lastname">Last Name: <textarea name="lastname" rows="1" columns="20" required></textarea></label>
+            <br>
+            <label for="email">Email: <textarea name="email" rows="1" columns="20" required></textarea></label>
+            <br>
+            <label for="gender">Gender: <select name="genders" id="genders" required>
+              <option value="male">Male</option>
+              <option value="female">Female</option>
+              <option value="nonbinary">Non-Binary</option>
+              <option value="other">Other</option>
+              </select></label>
+            <br>
+            <button type="submit" name="submit_id" value="all">Submit All</button>
+          </form>
+        </section>
+    </main>
+    <hr>
+    <footer>
+        <p>Author: Benjamin Kuo<br>Email: 
+            <a href="mailto:bkuo@ucsd.edu"><i>bkuo@ucsd.edu</i></a></p>
+    </footer>
+  </body>
+</html>
