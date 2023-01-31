@@ -31,18 +31,30 @@
         <section> 
           <p><strong>To contact me, </strong>please fill in the information below</p>
           <form action="action.php" method="GET">
-            <label for="firstname">First Name: <textarea name="firstname" rows="1" columns="20" required></textarea></label>
+            <label for="firstname">
+              First Name: <input type="text" id="firstname" name="firstname">
+            </label>
             <br>
-            <label for="lastname">Last Name: <textarea name="lastname" rows="1" columns="20" required></textarea></label>
+            <label for="lastname">
+              Last Name: <input type="text" name="lastname" id="'lastname"> 
+            </label>     
             <br>
-            <label for="email">Email: <textarea name="email" rows="1" columns="20" required></textarea></label>
+            <label for="email">
+              Email: <input type="'email" name="'email" id="'email">
+            </label>
             <br>
-            <label for="gender">Gender: <select name="genders" id="genders" required>
+            <label for="gender">
+              Gender: <select name="genders" id="genders" required>
               <option value="male">Male</option>
               <option value="female">Female</option>
               <option value="nonbinary">Non-Binary</option>
               <option value="other">Other</option>
-              </select></label>
+              </select>
+            </label>
+            <br>
+            <label for="comments">
+              Additional Comments: <textarea name="comments" id="comments" rows="4" columns="10"></textarea>
+            </label>
             <br>
             <button type="submit" name="submit_id" value="all">Submit All</button>
           </form>
