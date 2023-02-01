@@ -76,6 +76,44 @@
             </tr>
           </table>
         </div>
+        <hr>
+        <div class="technical_electives">
+          <h3>Technical electives I should take</h3>
+          <form action="action.php">
+            <label for="TE">Choose a class for me to take: </label>
+            <select name="TE" id="TE">
+              <optgroup label="CSE">
+                <option value="cse100-190">CSE100-CSE190</option>
+              </optgroup>
+              <optgroup label="COGS">
+                <option value="cogs109">COGS109</option>
+                <option value="cogs118a">COGS118A</option>
+                <option value="cogs118b">COGS118B</option>
+              </optgroup>
+              <optgroup label="DSC">
+                <option value="dsc102">DSC102</option>
+              </optgroup>
+              <optgroup label="ECON">
+                <option value="econ172a">ECON172A</option>
+                <option value="econ172b">ECON172B</option>
+              </optgroup>
+            </select>
+          </form>
+        </div>
+        <hr>
+        <div label="non_electives">
+          <h3>Non electives I should take</h3>
+          <form action="action.php" method="get">
+            <fieldset>
+              <legend>Non-electives to take</legend>
+              <label for="course_prefix">Course Prefix: </label>
+              <input type="text" id="course_prefix" name="course_prefix" required>
+              <label for="course_id">Course ID: </label>
+              <input type="text" id="course_id" name="course_id" required>
+              <input type="submit" value="Submit">
+            </fieldset>
+          </form>
+        </div>
     </main>
     <hr>
     <footer>

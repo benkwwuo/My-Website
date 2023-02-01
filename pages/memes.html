@@ -23,10 +23,21 @@
     </header>
     <main>
         <h2><b>Heh memes</b></h2>
-        <figure>
-          <img src="/assets/droolingface.jpg" alt="its a drooling face" style="width:50%">
-          <figcaption>Visual representation of me in my CSE classes</figcaption>
-        </figure>
+        <canvas id="circle" height="200" width="200" style="border:1px solid black">
+        </canvas>
+        <script>
+            var c = document.getElementById("circle")
+            var cx = c.getContext("2d");
+            cx.beginPath();
+            cx.arc(100, 100, 90, 0, 2 * Math.PI);
+            cx.stroke();
+        </script>
+        <aside>
+          <figure>
+            <img src="/assets/droolingface.jpg" alt="its a drooling face" style="width:50%">
+            <figcaption>Visual representation of me in my CSE classes</figcaption>
+          </figure>
+        </aside>
         <hr>
         <div class="crabdanceYT">
           <h3>Crab Rave Dance Youtube</h3>
@@ -56,6 +67,22 @@
           Your browser does not support the audio tag.
           </audio>
         </div>
+        <hr>
+        <div>
+          <h3>Testing out Pre tag</h3>
+        <pre>
+          aPpArEnTlY ThE       
+                TeXt hErE MaInTaInNnNs   tHe sPaCi
+            Ng aNd sTuFf sO LeT        s tEsT
+             It oUt hUrHu
+             DuRuR
+             rRr
+        </pre>
+        <template>
+          <h3>Will not be visible until we can use JS</h3>
+          <img src="/assets/mockingspongebobbb.jpg" width="214" height="204">
+        </template>
+      </div>
     </main>
     <hr>
     <footer>
