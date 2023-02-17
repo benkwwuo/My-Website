@@ -1,47 +1,158 @@
 <!DOCTYPE html>
 <html lang="en"> 
   <head>
+    <link href='https://fonts.googleapis.com/css?family=Oswald:300' rel='stylesheet' type='text/css'>
     <meta name="portfolio" content="Benjamin Kuo's Portfolio">
     <title>Benjamin's Portfolio</title> 
+    <style>
+      * {
+        font-family: 'Oswald', sans-serif;
+        color: #999;
+      }
+      h1 {
+        font-size: 400%;
+      }
+      h2 {
+        font-size: 2em;
+      }
+      p {
+        max-width:80ch;
+        text-align:center;
+        margin-left: auto;
+        margin-right: auto;
+        font-size: 1.5em;
+      }
+      body{
+        background:#1b1b2b;
+        padding:50px; 
+        text-align:center;
+      }
+      .navBtn{
+        color:#999;
+        background:rgba(0, 0, 0, 0.5);
+        padding:10px 30px;
+        text-decoration:none;
+        letter-spacing:2px;
+        margin-bottom: 3px;
+        font-size: 1rem;
+        display: inline-block;
+      }
+      .navBtn:hover{
+        background:#fff;
+        color:#1b1b1b;
+        transform: translateY(-10px);
+      }  
+      .navBtn:active{
+        background: #FFD700;
+      }
+      footer > p{
+        max-width:20ch;
+        display: block;
+        border: 1px solid #fff;
+        padding-left: 5px;
+        padding-right: 5px;
+        padding-top: 2px;
+        padding-bottom: 2px;
+      } 
+      .navbarBlock {
+        width: 50px;
+        height: 50px;
+        background-color: black;
+        position: fixed;
+        animation-name: leftRight;
+        animation-duration: 4s;
+        animation-iteration-count: infinite;
+      }
+
+      @keyframes leftRight {
+        0% {left:0px; top:0px;}
+        100% {left:100%; top:0px;}
+      }
+      img {
+        border-radius: 50%;
+        border: 5px solid #999;
+        margin-top: 5%;
+        margin-bottom: 5%;
+      }
+
+      /*mobile phone*/
+      @media screen and (max-width: 767px) {
+        img {
+          height: 200px;
+          width: 200px;
+        }
+        iframe {
+          height: 162px;
+          width: 363px;
+        }
+        video {
+          height: 162px;
+          width: 363px;
+        }
+      }
+      /* tablet or old laptop */
+      @media screen and (min-width: 768px) {
+        img {
+          height: 350px;
+          width: 350px;
+        }
+        iframe {
+          height: 227px;
+          width: 509px;
+        }
+        video {
+          height: 227px;
+          width: 509px;
+        }
+        
+      }
+      /*standard monitor, based off 1920x1080*/
+      @media screen and (min-width: 1300px) { 
+        img {
+          height: 500px;
+          width: 500px;
+        }
+        iframe {
+          height: 324px;
+          width: 727px;
+        }
+        video {
+          height: 324px;
+          width: 727px;
+        }
+      }
+      footer {
+        margin-left: 1vw;
+      }
+    </style>
   </head>
 
   <body> 
     <header>
+        <hr>
         <h1>Benjamin's Portfolio</h1> 
-        <hr>
+        <p class="navbarBlock"></p>
         <nav>
-            <ul>
-              <li><a href="/index.html">Home</a></li>
-              <li><a href="/pages/projects.html">Projects</a></li>
-              <li><a href="/pages/resume.html">Resume</a></li>
-              <li><a href="/pages/about.html">About Me</a></li>
-              <li><a href="/pages/contact.html">Contact Me</a></li>
-              <li><a href="/pages/memes.html">Memes</a></li>
-            </ul>
+          <a href="/index.html" class="navBtn">\000:HOME</a></li>
+          <a href="/pages/projects.html" class="navBtn">\001:PROJECTS</a></li>
+          <a href="/pages/resume.html" class="navBtn">\010:RESUME</a></li>
+          <a href="/pages/about.html" class="navBtn">\011:ABOUT</a></li>
+          <a href="/pages/contact.html" class="navBtn">\100:CONTACT</a></li>
+          <a href="/pages/memes.html" class="navBtn">\101:MEMES</a></li>
         </nav>
-        <hr>
     </header>
     <main>
-        <h2><b>Heh memes</b></h2>
-        <canvas id="circle" height="200" width="200" style="border:1px solid black">
-        </canvas>
-        <script>
-            var c = document.getElementById("circle")
-            var cx = c.getContext("2d");
-            cx.beginPath();
-            cx.arc(100, 100, 90, 0, 2 * Math.PI);
-            cx.stroke();
-        </script>
+        <h2><b>Memes</b></h2>
         <aside>
           <figure>
-            <img src="/assets/droolingface.jpg" alt="its a drooling face" style="width:50%">
+            <img src="/assets/droolingface.jpg" alt="a drooling face">
             <figcaption>Visual representation of me in my CSE classes</figcaption>
           </figure>
         </aside>
         <hr>
         <div class="crabdanceYT">
           <h3>Crab Rave Dance Youtube</h3>
-          <iframe width="727" height="324" src="https://www.youtube.com/embed/cE0wfjsybIQ" title="Noisestorm - Crab Rave (Official Music Video)" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen>
+          <iframe src="https://www.youtube.com/embed/cE0wfjsybIQ" title="Noisestorm - Crab Rave (Official Music Video)" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen>
           </iframe>
           <details>
             <summary><em>Emphasized Crab Dance Summary</em></summary>
@@ -87,7 +198,7 @@
         </template>
       </div>
     </main>
-    <hr>
+    <hr> 
     <footer>
       <svg viewBox="0 0 100 5" preserveAspectRatio="xMidYMid slice" role="img">
         <title>A gradient</title>

@@ -1,25 +1,92 @@
 <!DOCTYPE html>
 <html lang="en"> 
   <head>
+    <link href='https://fonts.googleapis.com/css?family=Oswald:300' rel='stylesheet' type='text/css'>
     <meta name="portfolio" content="Benjamin Kuo's Portfolio">
     <title>Benjamin's Portfolio</title> 
+    <style>
+      * {
+        font-family: 'Oswald', sans-serif;
+        color: #999;
+      }
+      h1 {
+        font-size: 400%;
+      }
+      h2 {
+        font-size: 2em;
+      }
+      p {
+        max-width:80ch;
+        text-align:center;
+        margin-left: auto;
+        margin-right: auto;
+        font-size: 1.5em;
+      }
+      body{
+        background:#1b1b2b;
+        padding:50px; 
+        text-align:center;
+      }
+      .navBtn{
+        color:#999;
+        background:rgba(0, 0, 0, 0.5);
+        padding:10px 30px;
+        text-decoration:none;
+        letter-spacing:2px;
+        margin-bottom: 3px;
+        font-size: 1rem;
+        display: inline-block;
+      }
+      .navBtn:hover{
+        background:#fff;
+        color:#1b1b1b;
+        transform: translateY(-10px);
+      }  
+      .navBtn:active{
+        background: #FFD700;
+      }
+      footer > p{
+        max-width:20ch;
+        display: block;
+        border: 1px solid #fff;
+        padding-left: 5px;
+        padding-right: 5px;
+        padding-top: 2px;
+        padding-bottom: 2px;
+      } 
+      .navbarBlock {
+        width: 50px;
+        height: 50px;
+        background-color: black;
+        position: fixed;
+        animation-name: leftRight;
+        animation-duration: 4s;
+        animation-iteration-count: infinite;
+      }
+
+      @keyframes leftRight {
+        0% {left:0px; top:0px;}
+        100% {left:100%; top:0px;}
+      }
+      footer {
+        margin-left: 1vw;
+      }
+    </style>
   </head>
 
   <body> 
     <header>
+      <hr>
         <h1>Benjamin's Portfolio</h1> 
-        <hr>
+        <p class="navbarBlock"></p>
         <nav>
-            <ul>
-               <li><a href="/index.html">Home</a></li>
-               <li><a href="/pages/projects.html">Projects</a></li>
-               <li><a href="/pages/resume.html">Resume</a></li>
-               <li><a href="/pages/about.html">About Me</a></li>
-               <li><a href="/pages/contact.html">Contact Me</a></li>
-               <li><a href="/pages/memes.html">Memes</a></li>
-            </ul>
+          <a href="/index.html" class="navBtn">\000:HOME</a></li>
+          <a href="/pages/projects.html" class="navBtn">\001:PROJECTS</a></li>
+          <a href="/pages/resume.html" class="navBtn">\010:RESUME</a></li>
+          <a href="/pages/about.html" class="navBtn">\011:ABOUT</a></li>
+          <a href="/pages/contact.html" class="navBtn">\100:CONTACT</a></li>
+          <a href="/pages/memes.html" class="navBtn">\101:MEMES</a></li>
         </nav>
-        <hr>
     </header>
     <main>
         <h2><b>Projects</b></h2>
