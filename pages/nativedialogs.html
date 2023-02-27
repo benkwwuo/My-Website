@@ -45,6 +45,23 @@
       .navBtn:active{
         background: #FFD700;
       }
+
+      .dialogBtn{
+        color:#999;
+        background:rgba(0, 0, 0, 0.5);
+        padding:10px 30px;
+        text-decoration:none;
+        letter-spacing:2px;
+        margin-bottom: 3px;
+        font-size: 1rem;
+        display: inline-block;
+      }
+
+      .dialogBtn:hover{
+        background:#fff;
+        color:#1b1b1b;
+        transform: translateY(-10px);
+      }
       footer > p{
         max-width:20ch;
         display: block;
@@ -72,6 +89,8 @@
         margin-left: 1vw;
       }
     </style>
+    <script>
+    </script>    
   </head>
 
   <body> 
@@ -90,8 +109,13 @@
         </nav>
     </header>
     <main>
-        <h2><b>About Me</b></h2>
-
+        <h2><b>Buttons</b></h2>
+            <div class="fourBtns">
+                <button class="dialogBtn" type="button">Alert</button>
+                <button class="dialogBtn" type="button">Confirm</button>
+                <button class="dialogBtn" type="button">Prompt</button>
+                <button class="dialogBtn" type="button">Safer Prompt</button>
+            </div>
     </main>
     <hr>
     <footer>
