@@ -2,6 +2,7 @@
 <html lang="en"> 
   <head>
     <link href='https://fonts.googleapis.com/css?family=Oswald:300' rel='stylesheet' type='text/css'>
+    <script type="text/javascript" src="dist/purify.min.js"></script>
     <meta name="portfolio" content="Benjamin Kuo's Portfolio">
     <title>Benjamin's Portfolio</title> 
     <style>
@@ -88,9 +89,7 @@
       footer {
         margin-left: 1vw;
       }
-    </style>
-    <script>
-    </script>    
+    </style>   
   </head>
 
   <body> 
@@ -111,11 +110,32 @@
     <main>
         <h2><b>Buttons</b></h2>
             <div class="fourBtns">
-                <button class="dialogBtn" type="button">Alert</button>
-                <button class="dialogBtn" type="button">Confirm</button>
-                <button class="dialogBtn" type="button">Prompt</button>
-                <button class="dialogBtn" type="button">Safer Prompt</button>
+                <button id="alertBtn" class="dialogBtn" type="button">Alert</button>
+                <button id="confirmBtn"class="dialogBtn" type="button">Confirm</button>
+                <button id="promptBtn"class="dialogBtn" type="button">Prompt</button>
+                <button id="spromptBtn"class="dialogBtn" type="button">Safer Prompt</button>
             </div>
+            <script type="text/javascript" src="dist/purify.min.js"></script>
+            <script>
+              document.getElementById("alertBtn").addEventListener("click", function(){ 
+                alert("Hello World!"); 
+              });
+              document.getElementById("promptBtn").addEventListener("click", function(){
+                var input = prompt("Enter something: ");
+                if (input === "") {
+                  alert("User didn't enter anything");
+                }
+                alert(input);
+              });
+              document.getElementById("spromptBtn").addEventListener("click", function(){
+                let input = prompt("Enter something: ");
+                if (input === "") {
+                  alert("User didn't enter anything");
+                }
+                var clean = DOMPurify.sanitize(input);
+                alert(input);
+              })
+            </script> 
     </main>
     <hr>
     <footer>
