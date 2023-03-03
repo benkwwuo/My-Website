@@ -30,8 +30,24 @@ function customPrompt() {
     document.getElementById("show3").onclick = function() {
         document.getElementById("innerP3").innerHTML = "Enter something: ";
         dialog3.show();
-    }
-    //save and purify text 
+    }; 
+    //user clicks cancel, doesn't matter if they entered anything, show user didnt enter anything
+    document.getElementById("cancel2").onclick = function() {
+        dialog3.close();
+        setCustOutput("Prompt result : User didn't enter anything");
+    };
+    //user clicks ok, either the submit is empty string or has something
+    document.getElementById("hide3").onclick = function() {
+        dialog3.close();
+        var input = document.getElementById("inputCustPrompt").value;
+        if (input === "") {
+            setCustOutput("Prompt result : User didn't enter anything")
+        }
+        else {
+            var clean = DOMPurify.sanitize(input);
+            setCustOutput("Prompt result : " + clean);
+        }
+    };
 };
 
 function setCustOutput(value) {

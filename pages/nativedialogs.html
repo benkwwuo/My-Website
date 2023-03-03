@@ -65,6 +65,9 @@
         color:#1b1b1b;
         transform: translateY(-10px);
       }
+      #inputCustPrompt{
+        resize: none;
+      }
       footer > p{
         max-width:20ch;
         display: block;
@@ -158,6 +161,7 @@
                 var output = document.getElementById("display1");
                 output.style.display = "block";
                 output.innerHTML = value;
+                
               };
             </script> 
             <hr>
@@ -170,7 +174,9 @@
                 <button id="show2" class="dialogBtn" onclick="customCnfm()">Confirm</button>                
                 
               <dialog id="custDialog3"><p id="innerP3"></p>
-                <button id="cancel2">Cancel</button><button id="hide2">Ok</button></dialog>
+                <textarea id="inputCustPrompt" rows="1" cols="20"></textarea>
+                <br>
+                <button id="cancel2">Cancel</button><button id="hide3">Ok</button></dialog>
                 <button id="show3" class="dialogBtn" onclick="customPrompt()">Prompt</button>                
               
               <br>
