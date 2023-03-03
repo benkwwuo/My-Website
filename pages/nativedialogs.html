@@ -2,7 +2,9 @@
 <html lang="en"> 
   <head>
     <link href='https://fonts.googleapis.com/css?family=Oswald:300' rel='stylesheet' type='text/css'>
-    <script type="text/javascript" src="dist/purify.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/3.0.1/purify.min.js" integrity="sha512-TU4FJi5o+epsahLtM9OFRvH2gXmmlzGlysk9wtTFgbYbMvFzh3Cw1l3ubnYIvBiZCC/aurRHS408TeEbcuOoyQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/3.0.1/purify.js" integrity="sha512-TRW4uJEyH03RBYDDP/0Nerf3y1zPCPzmLBq5IwjYtUyPD505Aro7Xh6ELpKmnH3yeKj6MP3meheJMJXB4aN0eQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script type="text/javascript" src="/scripts/customdialog.js"></script>
     <meta name="portfolio" content="Benjamin Kuo's Portfolio">
     <title>Benjamin's Portfolio</title> 
     <style>
@@ -72,6 +74,18 @@
         padding-top: 2px;
         padding-bottom: 2px;
       }
+      #display1, #display2{
+        font-size: 1.5rem;
+        max-width: 20ch;
+        display: block;
+        border-color: #fff;
+        border-style: double;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 20px;
+        padding: 5px;
+        display: none;
+      }
       .navbarBlock {
         width: 50px;
         height: 50px;
@@ -111,31 +125,57 @@
         <h2><b>Buttons</b></h2>
             <div class="fourBtns">
                 <button id="alertBtn" class="dialogBtn" type="button">Alert</button>
-                <button id="confirmBtn"class="dialogBtn" type="button">Confirm</button>
-                <button id="promptBtn"class="dialogBtn" type="button">Prompt</button>
-                <button id="spromptBtn"class="dialogBtn" type="button">Safer Prompt</button>
+                <button id="confirmBtn" class="dialogBtn" type="button">Confirm</button>
+                <button id="promptBtn" class="dialogBtn" type="button">Prompt</button>
+                <button id="spromptBtn" class="dialogBtn" type="button">Safer Prompt</button>
+                <output id="display1"></output>
             </div>
-            <script type="text/javascript" src="dist/purify.min.js"></script>
             <script>
-              document.getElementById("alertBtn").addEventListener("click", function(){ 
-                alert("Hello World!"); 
+              document.getElementById("alertBtn").addEventListener("click", alrtStmg = () => alert("Alert pressed!"));
+              document.getElementById("confirmBtn").addEventListener("click", function(){
+                if (confirm("Do you confirm this?"))
+                  var input = "Confirm result : true";
+                else
+                  var input = "Confirm result : false";
+                setOutput(input);
               });
               document.getElementById("promptBtn").addEventListener("click", function(){
                 var input = prompt("Enter something: ");
-                if (input === "") {
-                  alert("User didn't enter anything");
+                if (input === "" || input == null) {
+                  input = "User didn't enter anything";
                 }
-                alert(input);
+                setOutput("Prompt result : " + input);
               });
               document.getElementById("spromptBtn").addEventListener("click", function(){
                 let input = prompt("Enter something: ");
-                if (input === "") {
-                  alert("User didn't enter anything");
+                if (input === "" || input == null) {
+                  input = "User didn't enter anything"; 
                 }
                 var clean = DOMPurify.sanitize(input);
-                alert(input);
-              })
+                setOutput("Prompt result : " + clean);
+              });
+              function setOutput(value) {
+                var output = document.getElementById("display1");
+                output.style.display = "block";
+                output.innerHTML = value;
+              };
             </script> 
+            <hr>
+        <h2><b>Custom Buttons</b></h2>
+            <div class="customBtns">
+              <dialog id="custDialog1"><p id="innerP1"></p><button id="hide1">Ok</button></dialog>
+                <button id="show1" class="dialogBtn" onclick="customAlrt()">Alert</button>
+
+              <dialog id="custDialog2"><p id="innerP2"></p><button id="cancel1">Cancel</button><button id="hide2">Ok</button></dialog>
+                <button id="show2" class="dialogBtn" onclick="customCnfm()">Confirm</button>                
+                
+              <dialog id="custDialog3"><p id="innerP3"></p>
+                <button id="cancel2">Cancel</button><button id="hide2">Ok</button></dialog>
+                <button id="show3" class="dialogBtn" onclick="customPrompt()">Prompt</button>                
+              
+              <br>
+              <output id="display2"></output>
+            </div>
     </main>
     <hr>
     <footer>
