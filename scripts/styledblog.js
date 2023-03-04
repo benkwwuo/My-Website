@@ -1,24 +1,9 @@
 let items = JSON.parse(localStorage.getItem("blogData")) || [];
-/*
-items.push({
-    value: "test 1", 
-    day: "03/03/2016",
-    summary: "test1 summary blah blah blah",
-});
-items.push({
-    value: "test 2", 
-    day: "03/03/2020",
-    summary: "test2 summary blah blah blah",
-});
-items.push({
-    value: "test 3", 
-    day: "03/02/2000",
-    summary: "test3 summary blah blah blah",
-});
-*/
+
 window.onload = function() {
     listItems();
-};
+}
+
 // function to add item to the items array
 function addItem() {
   // get the value of the input box with querySelector
@@ -75,6 +60,8 @@ function editItem(index) {
   //the add button will add the post back to localstorage
 }
 // function that generates list of items and populates the html
+
+/*
 function listItems() {
   let list = "";
   for (let i = 0; i < items.length; i++) {
@@ -90,3 +77,20 @@ function listItems() {
   }
   document.querySelector("#list-items").innerHTML = list;
 }
+*/
+
+function listItems() {
+  let list = "";
+  for (let i = 0; i < items.length; i++) {
+    list += "<div class='blogColumn'><div class='blogCard'><hr>";
+    list += "<p id='blogTitle'>" + items[i].value + "</p>";
+    list += "<small style='text-decoration: underline;'>Date Posted: " + items[i].day + "</small>";
+    list += "<p id='summary'>" + items[i].summary +"</p><hr>";
+    list += "<button id='editPost' class='blogBtns' onclick='editItem(" + i + ")'>" + 
+    "<img src='/assets/pencil_icon.jpeg' alt='edit_button'></button>" + 
+    "<button id='deletePost' class='blogBtns' onclick='deleteItem(" + i + ")'>" +
+    "<img src='/assets/trash_icon.jpeg' alt='delete_button'></button></div></div>"; 
+  } 
+  document.getElementById("blogRow").innerHTML = list;
+}
+
