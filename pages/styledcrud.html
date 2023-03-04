@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link href='https://fonts.googleapis.com/css?family=Oswald:300' rel='stylesheet' type='text/css'>
+        <title>Visually Enchanced Basic Crud for Blogs</title>
+        <script type="text/javascript" src="/scripts/styledblog.js"></script>
+        <style>
+            * {
+              font-family: 'Oswald', sans-serif;
+              color: #999;
+            }
+            h1 {
+              font-size: 400%;
+            }
+            h2 {
+              font-size: 2em;
+            }
+            p {
+              max-width:80ch;
+              text-align:center;
+              margin-left: auto;
+              margin-right: auto;
+              font-size: 1.5em;
+            }
+            body{
+              background:#1b1b2b;
+              padding:50px; 
+              text-align:center;
+            }
+            .navBtn{
+              color:#999;
+              background:rgba(0, 0, 0, 0.5);
+              padding:10px 30px;
+              text-decoration:none;
+              letter-spacing:2px;
+              margin-bottom: 3px;
+              font-size: 1rem;
+              display: inline-block;
+            }
+            .navBtn:hover, .blogBtns:hover{
+              background:#fff;
+              color:#1b1b1b;
+              transform: translateY(-10px);
+            }   
+            .navBtn:active, .blogBtns:active{
+              background: #FFD700;
+            }
+            .blogBtns{
+                border-radius: 20%;
+                background-color: white;
+            }
+            footer > p{
+              max-width:20ch;
+              display: block;
+              border: 1px solid #fff;
+              padding-left: 5px;
+              padding-right: 5px;
+              padding-top: 2px;
+              padding-bottom: 2px;
+            }
+            .navbarBlock {
+              width: 50px;
+              height: 50px;
+              background-color: black;
+              position: fixed;
+              animation-name: leftRight;
+              animation-duration: 4s;
+              animation-iteration-count: infinite;
+            }
+            /*
+            create a box around .blogInput
+            */
+            .blogInput{
+              display: block;
+              padding-left: 5px;
+              padding-right: 5px;
+              padding-top: 2px;
+              padding-bottom: 2px;
+              background-color:rgba(0, 0, 0, 0.5);
+            }
+            @keyframes leftRight {
+              0% {left:0px; top:0px;}
+              100% {left:100%; top:0px;}
+            }
+            
+            img {
+              height: 1.5em;
+              width: 1.5em;
+            }
+            footer {
+              margin-left: 1vw;
+            }
+
+        </style>
+    </head>
+    <body>
+        <header>
+            <hr>
+            <h1>Benjamin's Portfolio</h1>
+            <p class="navbarBlock"></p>
+            <a href="/index.html" class="navBtn">\000:HOME</a>
+            <a href="/pages/projects.html" class="navBtn">\001:PROJECTS</a>
+            <a href="/pages/resume.html" class="navBtn">\010:RESUME</a>
+            <a href="/pages/about.html" class="navBtn">\011:ABOUT</a>
+            <a href="/pages/contact.html" class="navBtn">\100:CONTACT</a>
+            <a href="/pages/memes.html" class="navBtn">\101:MEMES</a>
+            <a href="/pages/nativedialogs.html" class="navBtn">\110:BUTTONS</a>
+            <a href="/pages/crud.html" class="navBtn">\111:CRUD</a>
+            <a href="/pages/styledcrud.html" class="navBtn">\STYLEDCRUD</a>
+        </header>
+        <main>
+            <h2>Blogs</h2>
+            <div class="row">
+                <div class="blogInput">
+                  <div class="inputField">
+                    <label for="postTitle">TITLE </label>
+                    <input id="postTitle" type="text"/>
+                    <label for="postDate">DATE </label>
+                    <input id="postDate" type="date"/>
+                    <label for="postSummary">SUMMARY </label>
+                    <input id="postSummary" type="text" />
+                  </div>
+                  <div class="inputFieldSubmit">
+                    <button onclick="addItem()" class="button expanded">Add</button>
+                  </div>
+                </div>
+            </div>              
+              <div class="row">
+                <div class="blogContainer">
+                <ul id="list-items">
+                </ul>
+                </div>
+              </div>
+        </main>
+    </body>
+    <hr>
+    <footer>
+        <p>Author: Benjamin Kuo<br>Email: 
+            <a href="mailto:bkuo@ucsd.edu"><i>bkuo@ucsd.edu</i></a></p>
+    </footer>
+</html>

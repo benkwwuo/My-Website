@@ -1,4 +1,21 @@
 let items = JSON.parse(localStorage.getItem("blogData")) || [];
+/*
+items.push({
+    value: "test 1", 
+    day: "03/03/2016",
+    summary: "test1 summary blah blah blah",
+});
+items.push({
+    value: "test 2", 
+    day: "03/03/2020",
+    summary: "test2 summary blah blah blah",
+});
+items.push({
+    value: "test 3", 
+    day: "03/02/2000",
+    summary: "test3 summary blah blah blah",
+});
+*/
 window.onload = function() {
     listItems();
 };
@@ -65,19 +82,11 @@ function listItems() {
     list += "Post Title: " + items[i].value + " " + 
             "Post Date: " + items[i].day + " " + 
             "Post Summary: " + items[i].summary;
-    list +=
-      "<button id='deletePost' onclick='deleteItem(" +
-      i +
-      ")'>Delete</button><button id='editPost' onclick='editItem(" +
-      i + 
-      ")'>Edit</button></li>";
+    list += "<br>" + 
+      "<button id='editPost' class='blogBtns' onclick='editItem(" + i + ")'>" + 
+      "<img src='/assets/pencil_icon.jpeg' alt='edit_button'></button>" + 
+      "<button id='deletePost' class='blogBtns' onclick='deleteItem(" + i + ")'>" + 
+      "<img src='/assets/trash_icon.jpeg' alt='delete_button'></button></li>";
   }
   document.querySelector("#list-items").innerHTML = list;
 }
-
-// function to run when page loads
-/*
-(function () {
-  listItems();
-})();
-*/
