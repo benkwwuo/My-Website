@@ -150,8 +150,13 @@
           <button id="delBtn" class="dialogBtn" type="button">DELETE</button>
         </div>
         <br>
-      <h2>Response</h2>
+      <h2 id="request">HTTP Response</h2>
         <output id="response">
+          <p><b>Args</b></p>
+          <p>somrething more somrething
+            asdaqwdasda
+            asdaqwdasda
+          </p>
           
         </output>
     </main>
@@ -170,6 +175,7 @@
     const put = document.getElementById("putBtn");
     const del = document.getElementById("delBtn");
     const output = document.getElementById("response");
+    const header = document.getElementById("request");
     
     get.addEventListener("click", () => {
       const idVal = id.value;
@@ -253,24 +259,45 @@
     
     function listJSON(object) {
       let list = "";
-      let thing = JSON.parse(object);
-      let outerKeys = Object.keys(thing);
-      for (let i = 0; i < 2; i++) {
-        console.log("before1");
-        let outerKeys = Object.keys(thing)[i]
-        console.log("before1.5");
-        console.log(outerKeys);
-        console.log("before1.7");
-        for (let j = 0; j < Object.keys(thing[outerKeys]).length; j++) {
-          console.log("before2");
-          const innerKeys = Object.keys(thing[outerKeys])[j]
-          console.log(innerKeys + ": " + thing[outerKeys][innerKeys]);
+      let parseResp = JSON.parse(object);
+      let outerKeys = Object.keys(parseResp);
+      console.log(parseResp);
+      for (let i = 0; i < outerKeys.length; i++) {
+        let outerKeys = Object.keys(parseResp)[i]
+        console.log("outerkey: " + outerKeys);
+        if (Object.keys(parseResp[outerKeys]).length == 1)
+          console.log("only got 1 innerkey");
+        for (let j = 0; j < Object.keys(parseResp[outerKeys]).length; j++) {
+          const innerKeys = Object.keys(parseResp[outerKeys])[j]            
+          console.log("innerkey: " + innerKeys + ": " + parseResp[outerKeys][innerKeys]);
         }
       }
       //console.log(thing["args"]["article_name"]);
 
     }
-
+    
+   /*
+    function listJSON(object) {
+      let list = "";
+      let parseResp = JSON.parse(object);
+      let outerKeys = Object.keys(parseResp);
+      console.log(parseResp);
+      for (let i = 0; i < Object.keys(parseResp).length; i++) {
+        let outerKeys = Object.keys(parseResp)[i]
+        list += `<p><b>${outerKeys}</p></b> <p><hr>`;//has the opening p tag for the values
+        console.log(outerKeys);
+        for (let j = 0; j < Object.keys(parseResp[outerKeys]).length; j++) {
+          const innerKeys = Object.keys(parseResp[outerKeys])[j]
+          const innerVal = parseResp[outerKeys][innerKeys];
+          list += `<b>${innerKeys}</b>: ${innerVal} <br>`;
+          console.log(innerKeys + ": " + innerVal);
+        }
+        list += `</p>`; //closing p tag for value
+      }
+      //console.log(thing["args"]["article_name"]);
+      output.innerHTML = list;
+    }
+    */
 
   </script>
 </html>
