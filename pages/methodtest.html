@@ -45,6 +45,22 @@
       .navBtn:active{
         background: #FFD700;
       }
+      .dialogBtn{
+        color:#999;
+        background:rgba(0, 0, 0, 0.5);
+        padding:10px 30px;
+        text-decoration:none;
+        letter-spacing:2px;
+        margin-bottom: 3px;
+        font-size: 1rem;
+        display: inline-block;
+      }
+
+      .dialogBtn:hover{
+        background:#fff;
+        color:#1b1b1b;
+        transform: translateY(-10px);
+      }
       footer > p{
         max-width:20ch;
         display: block;
@@ -108,27 +124,36 @@
         <h1>Benjamin's Portfolio</h1> 
         <p class="navbarBlock"></p>
         <nav>
-            <a href="/index.html" class="navBtn">\HOME</a>
-            <a href="/pages/projects.html" class="navBtn">\PROJECTS</a>
-            <a href="/pages/resume.html" class="navBtn">\RESUME</a>
-            <a href="/pages/about.html" class="navBtn">\ABOUT</a>
-            <a href="/pages/contact.html" class="navBtn">\CONTACT</a>
-            <a href="/pages/memes.html" class="navBtn">\MEMES</a>
-            <a href="/pages/nativedialogs.html" class="navBtn">\BUTTONS</a>
-            <a href="/pages/crud.html" class="navBtn">\CRUD</a>
-            <a href="/pages/styledcrud.html" class="navBtn">\STYLEDCRUD</a>
-            <a href="/pages/methodtest.html" class="navBtn">\METHODTEST</a>
+          <a href="/index.html" class="navBtn">\HOME</a>
+          <a href="/pages/about.html" class="navBtn">\ABOUT</a>
+          <a href="/pages/contact.html" class="navBtn">\CONTACT</a>
+          <a href="/pages/nativedialogs.html" class="navBtn">\BUTTONS</a>
+          <a href="/pages/styledcrud.html" class="navBtn">\STYLEDCRUD</a>
+          <a href="/pages/methodtest.html" class="navBtn">\METHODTEST</a>
         </nav>
     </header>
     <main>
+      <h2>HTTP Requests</h2>
         <form action="" method="">
-            <label for="articleID">ID: </label>
+            <label for="articleID">ID</label><br>
             <input type="text" id="articleID" name="articleID"><br>
-            <label for="article_name">Article Name: </label>
+            <label for="article_name">Article Name</label><br>
             <input type="text" id="article_name" name="article_name"><br>
-            <label for="article_body">Article Body: </label>
-            <input type="text" id="article_body" name="article_body">
+            <label for="article_body">Article Body</label><br>
+            <textarea id="article_body" rows="4" cols="50"></textarea>
         </form>
+        <br>
+        <div class="requestBtns">
+          <button id="getBtn" class="dialogBtn" type="button">GET</button>
+          <button id="postBtn" class="dialogBtn" type="button">POST</button>
+          <button id="putBtn" class="dialogBtn" type="button">PUT</button>
+          <button id="delBtn" class="dialogBtn" type="button">DELETE</button>
+        </div>
+        <br>
+      <h2>Response</h2>
+        <output id="response">
+          
+        </output>
     </main>
     <hr>
     <footer>
@@ -136,4 +161,116 @@
             <a href="mailto:bkuo@ucsd.edu"><i>bkuo@ucsd.edu</i></a></p>
     </footer>
   </body>
+  <script type="module">
+    const id = document.getElementById("articleID");
+    const name = document.getElementById("article_name");
+    const body = document.getElementById("article_body");
+    const get = document.getElementById("getBtn");
+    const post = document.getElementById("postBtn");
+    const put = document.getElementById("putBtn");
+    const del = document.getElementById("delBtn");
+    const output = document.getElementById("response");
+    
+    get.addEventListener("click", () => {
+      const idVal = id.value;
+      const nameVal = name.value;
+      const bodyVal = body.value;
+      const dateVal = new Date();
+      const xhr = new XMLHttpRequest();
+      xhr.onreadystatechange = function() {
+        if (this.readyState === XMLHttpRequest.DONE)  {
+          if (this.status === 200) {
+            const resp = xhr.responseText;
+            output.value = resp;
+            //console.log(resp);
+            listJSON(resp);
+          }
+        }
+      };
+      xhr.open("GET", `https://httpbin.org/get?id=${idVal}&article_name=${nameVal}&article_body=${bodyVal}&date=${dateVal}`)
+      xhr.send();
+    });
+
+    post.addEventListener("click", () => { //create new resource
+      const idVal = id.value;
+      const nameVal = name.value;
+      const bodyVal = body.value;
+      const dateVal = new Date();
+      const xhr = new XMLHttpRequest();
+      xhr.onreadystatechange = function() {
+        if (this.readyState === XMLHttpRequest.DONE)  {
+          if (this.status === 200) {
+            const resp = xhr.responseText;
+            output.value = resp;
+            console.log(resp);
+            listJSON(resp);
+          }
+        }
+      };
+      xhr.open("POST", `https://httpbin.org/post?id=${idVal}&article_name=${nameVal}&article_body=${bodyVal}&date=${dateVal}`)
+      xhr.send();
+    });
+
+    put.addEventListener("click", () => { //update existing resource
+      const idVal = id.value;
+      const nameVal = name.value;
+      const bodyVal = body.value;
+      const dateVal = new Date();
+      const xhr = new XMLHttpRequest();
+      xhr.onreadystatechange = function() {
+        if (this.readyState === XMLHttpRequest.DONE)  {
+          if (this.status === 200) {
+            const resp = xhr.responseText;
+            output.value = resp;
+            //console.log(resp);
+            listJSON(resp);
+          }
+        }
+      };
+      xhr.open("PUT", `https://httpbin.org/put?id=${idVal}&article_name=${nameVal}&article_body=${bodyVal}&date=${dateVal}`)
+      xhr.send();
+    });
+
+    del.addEventListener("click", () => {
+      const idVal = id.value;
+      const nameVal = name.value;
+      const bodyVal = body.value;
+      const dateVal = new Date();
+      const xhr = new XMLHttpRequest();
+      xhr.onreadystatechange = function() {
+        if (this.readyState === XMLHttpRequest.DONE)  {
+          if (this.status === 200) {
+            const resp = xhr.responseText;
+            output.value = resp;
+            //console.log(resp);
+            listJSON(resp);
+          }
+        }
+      };
+      xhr.open("DELETE", `https://httpbin.org/delete?id=${idVal}&article_name=${nameVal}&article_body=${bodyVal}&date=${dateVal}`)
+      xhr.send();
+    });
+    
+    function listJSON(object) {
+      let list = "";
+      let thing = JSON.parse(object);
+      let outerKeys = Object.keys(thing);
+      for (let i = 0; i < 2; i++) {
+        console.log("before1");
+        let outerKeys = Object.keys(thing)[i]
+        console.log("before1.5");
+        console.log(outerKeys);
+        console.log("before1.7");
+        for (let j = 0; j < Object.keys(thing[outerKeys]).length; j++) {
+          console.log("before2");
+          const innerKeys = Object.keys(thing[outerKeys])[j]
+          console.log(innerKeys + ": " + thing[outerKeys][innerKeys]);
+        }
+      }
+      //console.log(thing["args"]["article_name"]);
+
+    }
+
+
+  </script>
 </html>
