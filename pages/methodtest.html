@@ -263,17 +263,27 @@
       let outerKeys = Object.keys(parseResp);
       console.log(parseResp);
       for (let i = 0; i < outerKeys.length; i++) {
-        let outerKeys = Object.keys(parseResp)[i]
-        console.log("outerkey: " + outerKeys);
-        if (Object.keys(parseResp[outerKeys]).length == 1)
-          console.log("only got 1 innerkey");
-        for (let j = 0; j < Object.keys(parseResp[outerKeys]).length; j++) {
-          const innerKeys = Object.keys(parseResp[outerKeys])[j]            
-          console.log("innerkey: " + innerKeys + ": " + parseResp[outerKeys][innerKeys]);
+        let outerKey = Object.keys(parseResp)[i];
+        console.log(outerKey);
+        //if a key has a null value, just console log it
+        if (parseResp[outerKey] === null)
+          console.log("found a null");
+        else {
+          //console.log(Object.keys(parseResp[outerKey]).toString());
+          let innerLen = Object.keys(parseResp[outerKey]).length;
+          let thingie = "";
+          for (let j = 0; j < innerLen; j++) {
+            
+            const innerKeys = Object.keys(parseResp[outerKey])[j]; 
+            thingie += parseResp[outerKey][innerKeys];  
+            if (outerKey !== "url" || outerKey !== "origin")
+              console.log("innerkey: " + innerKeys + ": " + parseResp[outerKey][innerKeys]);
+          }
+          if (outerKey === "url" || outerKey === "origin")
+            console.log("innerkey: " + innerKeys + ": " + thingie);
         }
-      }
       //console.log(thing["args"]["article_name"]);
-
+      }
     }
     
    /*
