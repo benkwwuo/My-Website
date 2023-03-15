@@ -1,3 +1,2 @@
-https://jocular-lokum-363c7b.netlify.app/pages/nativedialogs.html
-https://jocular-lokum-363c7b.netlify.app/pages/crud.html
-https://jocular-lokum-363c7b.netlify.app/pages/styledcrud.html
+https://moonlit-tiramisu-6faedd.netlify.app/pages/methodtest.html
+https://moonlit-tiramisu-6faedd.netlify.app/pages/webcomponent.html

@@ -115,6 +115,10 @@
           width: 500px;
         }
       }
+      #response {
+        text-align: left;
+
+      }
     </style>
   </head>
 
@@ -250,34 +254,7 @@
       xhr.open("DELETE", `https://httpbin.org/delete?id=${idVal}&article_name=${nameVal}&article_body=${bodyVal}&date=${dateVal}`)
       xhr.send(payload);
     });
-    /*
-    function listJSON(object) {
-      let list = "";
-      let parseResp = JSON.parse(object);
-      let outerKeys = Object.keys(parseResp);
-      for (let i = 0; i < outerKeys.length; i++) {
-        let outerKey = Object.keys(parseResp)[i];
-        //if a key has a null value, just console log it
-        if (parseResp[outerKey] === null)
-          console.log("found a null, just ignore it");
-        else {
-          //console.log(Object.keys(parseResp[outerKey]).toString());
-          console.log(outerKey);
-          let innerLen = Object.keys(parseResp[outerKey]).length;
-          let thingie = "";
-          for (let j = 0; j < innerLen; j++) {
-            var innerKeys = Object.keys(parseResp[outerKey])[j]; 
-            thingie += parseResp[outerKey][innerKeys];  
-            if (outerKey !== "url" && outerKey !== "origin" && outerKey !== "data")
-              console.log(innerKeys + ": " + parseResp[outerKey][innerKeys]);
-          }
-          if (outerKey === "url" || outerKey === "origin" || outerKey === "data")
-            console.log(outerKey + ": " + thingie);
-        }
-      //console.log(thing["args"]["article_name"]);
-      }
-    }
-    */
+   
     function listJSON(object) {
       let list = "";
       let parseResp = JSON.parse(object);
@@ -290,7 +267,6 @@
           console.log("found a null, just ignore it");
         else {
           list += `<p><b>${outerKey}</b></p><p>`;
-          //console.log(outerKey);
           let innerLen = Object.keys(parseResp[outerKey]).length;
           let thingie = "";
           for (let j = 0; j < innerLen; j++) {
@@ -298,41 +274,13 @@
             thingie += parseResp[outerKey][innerKeys];  
             if (outerKey !== "url" && outerKey !== "origin" && outerKey !== "data")
               list += `${innerKeys}: ${parseResp[outerKey][innerKeys]}<br>`
-              //console.log(innerKeys + ": " + parseResp[outerKey][innerKeys]);
           }
           if (outerKey === "url" || outerKey === "origin" || outerKey === "data")
             list += `${outerKey}: ${thingie}<br>`
-            //console.log(outerKey + ": " + thingie);
           list += `</p>`;
         }
-      //console.log(thing["args"]["article_name"]);
       output.innerHTML=list;
       }
     }
-    
-    
-   /*
-    function listJSON(object) {
-      let list = "";
-      let parseResp = JSON.parse(object);
-      let outerKeys = Object.keys(parseResp);
-      console.log(parseResp);
-      for (let i = 0; i < Object.keys(parseResp).length; i++) {
-        let outerKeys = Object.keys(parseResp)[i]
-        list += `<p><b>${outerKeys}</p></b> <p><hr>`;//has the opening p tag for the values
-        console.log(outerKeys);
-        for (let j = 0; j < Object.keys(parseResp[outerKeys]).length; j++) {
-          const innerKeys = Object.keys(parseResp[outerKeys])[j]
-          const innerVal = parseResp[outerKeys][innerKeys];
-          list += `<b>${innerKeys}</b>: ${innerVal} <br>`;
-          console.log(innerKeys + ": " + innerVal);
-        }
-        list += `</p>`; //closing p tag for value
-      }
-      //console.log(thing["args"]["article_name"]);
-      output.innerHTML = list;
-    }
-    */
-
   </script>
 </html>
