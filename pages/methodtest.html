@@ -130,6 +130,7 @@
           <a href="/pages/nativedialogs.html" class="navBtn">\BUTTONS</a>
           <a href="/pages/styledcrud.html" class="navBtn">\STYLEDCRUD</a>
           <a href="/pages/methodtest.html" class="navBtn">\METHODTEST</a>
+          <a href="/pages/webcomponent.html" class="navBtn">\WEBCOMPONENT</a>
         </nav>
     </header>
     <main>
@@ -152,12 +153,6 @@
         <br>
       <h2 id="request">HTTP Response</h2>
         <output id="response">
-          <p><b>Args</b></p>
-          <p>somrething more somrething
-            asdaqwdasda
-            asdaqwdasda
-          </p>
-          
         </output>
     </main>
     <hr>
@@ -188,7 +183,6 @@
           if (this.status === 200) {
             const resp = xhr.responseText;
             output.value = resp;
-            //console.log(resp);
             listJSON(resp);
           }
         }
@@ -201,20 +195,20 @@
       const idVal = id.value;
       const nameVal = name.value;
       const bodyVal = body.value;
-      const dateVal = new Date();
+      const dateVal = new Date(); 
+      const payload = `id=${idVal}&article_name=${nameVal}&article_body=${bodyVal}&date=${dateVal}`;
       const xhr = new XMLHttpRequest();
       xhr.onreadystatechange = function() {
         if (this.readyState === XMLHttpRequest.DONE)  {
           if (this.status === 200) {
             const resp = xhr.responseText;
             output.value = resp;
-            console.log(resp);
             listJSON(resp);
           }
         }
       };
       xhr.open("POST", `https://httpbin.org/post?id=${idVal}&article_name=${nameVal}&article_body=${bodyVal}&date=${dateVal}`)
-      xhr.send();
+      xhr.send(payload);
     });
 
     put.addEventListener("click", () => { //update existing resource
@@ -222,19 +216,19 @@
       const nameVal = name.value;
       const bodyVal = body.value;
       const dateVal = new Date();
+      const payload = `id=${idVal}&article_name=${nameVal}&article_body=${bodyVal}&date=${dateVal}`;
       const xhr = new XMLHttpRequest();
       xhr.onreadystatechange = function() {
         if (this.readyState === XMLHttpRequest.DONE)  {
           if (this.status === 200) {
             const resp = xhr.responseText;
             output.value = resp;
-            //console.log(resp);
             listJSON(resp);
           }
         }
       };
       xhr.open("PUT", `https://httpbin.org/put?id=${idVal}&article_name=${nameVal}&article_body=${bodyVal}&date=${dateVal}`)
-      xhr.send();
+      xhr.send(payload);
     });
 
     del.addEventListener("click", () => {
@@ -242,49 +236,80 @@
       const nameVal = name.value;
       const bodyVal = body.value;
       const dateVal = new Date();
+      const payload = `id=${idVal}&article_name=${nameVal}&article_body=${bodyVal}&date=${dateVal}`;
       const xhr = new XMLHttpRequest();
       xhr.onreadystatechange = function() {
         if (this.readyState === XMLHttpRequest.DONE)  {
           if (this.status === 200) {
             const resp = xhr.responseText;
             output.value = resp;
-            //console.log(resp);
             listJSON(resp);
           }
         }
       };
       xhr.open("DELETE", `https://httpbin.org/delete?id=${idVal}&article_name=${nameVal}&article_body=${bodyVal}&date=${dateVal}`)
-      xhr.send();
+      xhr.send(payload);
     });
-    
+    /*
     function listJSON(object) {
       let list = "";
       let parseResp = JSON.parse(object);
       let outerKeys = Object.keys(parseResp);
-      console.log(parseResp);
       for (let i = 0; i < outerKeys.length; i++) {
         let outerKey = Object.keys(parseResp)[i];
-        console.log(outerKey);
         //if a key has a null value, just console log it
         if (parseResp[outerKey] === null)
-          console.log("found a null");
+          console.log("found a null, just ignore it");
         else {
           //console.log(Object.keys(parseResp[outerKey]).toString());
+          console.log(outerKey);
           let innerLen = Object.keys(parseResp[outerKey]).length;
           let thingie = "";
           for (let j = 0; j < innerLen; j++) {
-            
-            const innerKeys = Object.keys(parseResp[outerKey])[j]; 
+            var innerKeys = Object.keys(parseResp[outerKey])[j]; 
             thingie += parseResp[outerKey][innerKeys];  
-            if (outerKey !== "url" || outerKey !== "origin")
-              console.log("innerkey: " + innerKeys + ": " + parseResp[outerKey][innerKeys]);
+            if (outerKey !== "url" && outerKey !== "origin" && outerKey !== "data")
+              console.log(innerKeys + ": " + parseResp[outerKey][innerKeys]);
           }
-          if (outerKey === "url" || outerKey === "origin")
-            console.log("innerkey: " + innerKeys + ": " + thingie);
+          if (outerKey === "url" || outerKey === "origin" || outerKey === "data")
+            console.log(outerKey + ": " + thingie);
         }
       //console.log(thing["args"]["article_name"]);
       }
     }
+    */
+    function listJSON(object) {
+      let list = "";
+      let parseResp = JSON.parse(object);
+      console.log(parseResp);
+      let outerKeys = Object.keys(parseResp);
+      for (let i = 0; i < outerKeys.length; i++) {
+        let outerKey = Object.keys(parseResp)[i];
+        //if a key has a null value, just console log it
+        if (parseResp[outerKey] === null)
+          console.log("found a null, just ignore it");
+        else {
+          list += `<p><b>${outerKey}</b></p><p>`;
+          //console.log(outerKey);
+          let innerLen = Object.keys(parseResp[outerKey]).length;
+          let thingie = "";
+          for (let j = 0; j < innerLen; j++) {
+            var innerKeys = Object.keys(parseResp[outerKey])[j]; 
+            thingie += parseResp[outerKey][innerKeys];  
+            if (outerKey !== "url" && outerKey !== "origin" && outerKey !== "data")
+              list += `${innerKeys}: ${parseResp[outerKey][innerKeys]}<br>`
+              //console.log(innerKeys + ": " + parseResp[outerKey][innerKeys]);
+          }
+          if (outerKey === "url" || outerKey === "origin" || outerKey === "data")
+            list += `${outerKey}: ${thingie}<br>`
+            //console.log(outerKey + ": " + thingie);
+          list += `</p>`;
+        }
+      //console.log(thing["args"]["article_name"]);
+      output.innerHTML=list;
+      }
+    }
+    
     
    /*
     function listJSON(object) {
